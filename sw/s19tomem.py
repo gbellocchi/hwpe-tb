@@ -41,11 +41,11 @@ for l in s.split():
     wh = int(l[9:17], 16)
     wl = int(l[17:25], 16)
     if addr >= DATA_BASE and addr < STACK_BASE:
-        data_mem [addr / 4]     = wl
-        data_mem [addr / 4 + 1] = wh
+        data_mem [int(addr / 4)]     = wl
+        data_mem [int(addr / 4 + 1)] = wh
     else:
-        instr_mem[addr / 4]     = wl
-        instr_mem[addr / 4 + 1] = wh
+        instr_mem[int(addr / 4)]     = wl
+        instr_mem[int(addr / 4 + 1)] = wh
 
 s = ""
 for m in instr_mem:
