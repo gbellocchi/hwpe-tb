@@ -18,9 +18,10 @@
  * Authors:  Francesco Conti <fconti@iis.ee.ethz.ch>
  */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include <stdint.h>
-#include "archi_hwpe.h"
-#include "hal_hwpe.h"
 
 // HWPE
 #include "inc/hwpe_lib/archi_hwpe.h"
@@ -38,7 +39,13 @@ int main() {
   uint32_t width                  = 64; // fill with a value
   uint32_t height                 = 64; // fill with a value
   uint32_t stripe_height          = 64; // fill with a value
-  // 2. Custom registers
+  // 2. Accelerator execution
+  // Number of engine runs needed to terminate the accelerator job.
+  // This is equivalent to the number of 'done' signals that are
+  // produced by the engine itself.
+  const unsigned engine_runs_dst_V         =    64       ;
+
+  // 3. Custom registers
   const unsigned width_val = 64; // fill with a value
   const unsigned height_val = 64; // fill with a value
 
@@ -75,20 +82,20 @@ int main() {
   const unsigned src_V_step                   = 4;
   /* Address generator - Parameters for output streams */
   // input src_V
-  const unsigned src_V_trans_size             = src_V_width * src_V_stripe_height;
-  const unsigned src_V_line_stride            = 0;
-  const unsigned src_V_line_length            = src_V_width * src_V_stripe_height;
-  const unsigned src_V_feat_stride            = 0;
-  const unsigned src_V_feat_length            = 1;
-  const unsigned src_V_feat_roll              = 0;
-  const unsigned src_V_loop_outer             = 0;
-  const unsigned src_V_realign_type           = 0;
-  const unsigned src_V_step                   = 4;
+  const unsigned dst_V_trans_size             = dst_V_width * dst_V_stripe_height;
+  const unsigned dst_V_line_stride            = 0;
+  const unsigned dst_V_line_length            = dst_V_width * dst_V_stripe_height;
+  const unsigned dst_V_feat_stride            = 0;
+  const unsigned dst_V_feat_length            = 1;
+  const unsigned dst_V_feat_roll              = 0;
+  const unsigned dst_V_loop_outer             = 0;
+  const unsigned dst_V_realign_type           = 0;
+  const unsigned dst_V_step                   = 4;
 
-  uint8_t *src_V_l1 = src_V;
-  uint8_t *dst_V_l1;
+  int32_t *src_V_l1 = src_V;
+  int32_t *dst_V_l1;
 
-  uint8_t *dst_V_golden_l1 = dst_V;
+  int32_t *dst_V_golden_l1 = dst_V;
 
   
   /* convolution-accumulation - HW */
