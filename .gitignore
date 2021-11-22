@@ -1,0 +1,6 @@
+# hardware
+/hw/rtl/tb_hwpe.sv
+# software
+/sw/*
+# sim
+/sim/*
