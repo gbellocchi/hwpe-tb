@@ -1,4 +1,12 @@
 /hw/ips
 /hw/ipstools
+
+/hw/rtl/tb_hwpe.sv
+
+/hw/sim/modelsim.ini
+/hw/sim/modelsim_libs
+/hw/sim/transcript
+
 /sw/*
+
 /build
