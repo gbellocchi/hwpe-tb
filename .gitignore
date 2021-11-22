@@ -1,6 +1,9 @@
 # hardware
+/hw/ips
+/hw/sim
 /hw/rtl/tb_hwpe.sv
 # software
 /sw/*
 # sim
 /sim/*
+/build
