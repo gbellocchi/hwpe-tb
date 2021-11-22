@@ -1,7 +1,7 @@
 # hardware
-/hw/*
+/hw
 # software
-/sw/*
+/sw
 # sim
 /sim/*
 /build
