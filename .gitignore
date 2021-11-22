@@ -1,2 +1,4 @@
+/hw/ips
+/hw/ipstools
 /sw/*
 /build
