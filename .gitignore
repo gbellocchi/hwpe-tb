@@ -2,10 +2,10 @@
 /hw/ipstools
 
 /hw/rtl/*
-
 /hw/sim/*
-
 /hw/veri/*
+hw/*.json
+hw/*.pyc
 
 /sw/*
 
