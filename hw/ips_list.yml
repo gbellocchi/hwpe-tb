@@ -2,10 +2,12 @@ zero-riscy:
   commit: tags/pulpissimo-v1.0
 hwpe-ctrl:
   commit: 67b6ceb1fbe7e3539ca938c17c07f730a88d96d9
+  domain: [master]
 hwpe-stream:
   commit: 772da7969f31c435993273e1a6b49402dc35e3d8
+  domain: [master]
 hwpe-gen-app:
-  commit: b713b9ecb5932e1c74ae681276570cbf51c09856
+  commit: 7bcfb0fa94e6cbfd2b3d1137745f8363767369d8
   domain: [master]
 tech_cells_generic:
   commit : 8ed192c7be993bc8daba5467284a76539e5cfac6
