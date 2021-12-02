@@ -2,10 +2,9 @@
 /hw/ipstools
 
 /hw/rtl/*
-
 /hw/sim/*
-
 /hw/veri/*
+hw/.cached_ipdb.json
 
 /sw/*
 
