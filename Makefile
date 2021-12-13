@@ -20,6 +20,8 @@ P_STALL ?= 0.0
 BUILD_DIR ?= build
 TEST_SRCS ?= sw/tb_hwpe.c
 
+USER_GIT ?= gbellocchi
+
 # Setup toolchain (from SDK) and options
 CC=$(PULP_RISCV_GCC_TOOLCHAIN_CI)/bin/riscv32-unknown-elf-gcc
 LD=$(PULP_RISCV_GCC_TOOLCHAIN_CI)/bin/riscv32-unknown-elf-gcc
@@ -69,7 +71,7 @@ endif
 all: $(STIM_INSTR) $(STIM_DATA)
 
 update-ips:
-	cd hw; ./update-ips
+	cd hw; ./update-ips ${USER_GIT}
 
 build-hw:
 	cd hw/sim; make clean lib build opt

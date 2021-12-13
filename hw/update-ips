@@ -15,18 +15,29 @@
 # limitations under the License.
 
 from ipstools_cfg import *
+import sys
 
 try:
     os.mkdir("ips")
 except OSError:
     pass
+
+'''
+    ===================================
+    Clone from PULP platform repository
+    ===================================
+'''
+
+git_group='pulp-platform'
+
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
     skip_scripts=True,
     rtl_dir='rtl',
     ips_dir='ips',
     vsim_dir='sim',
-    default_server=DEFAULT_SERVER
+    default_server=DEFAULT_SERVER,
+    default_group=git_group
 )
 
 # updates the IPs from the git repo
@@ -36,3 +47,27 @@ ipdb.update_ips()
 ipdb.save_database()
 execute("./generate-scripts")
 
+'''
+    ==========================
+    Clone from user repository
+    ==========================
+'''
+
+git_group=sys.argv[1]
+
+# creates an IPApproX database
+ipdb = ipstools.IPDatabase(
+    skip_scripts=True,
+    rtl_dir='rtl',
+    ips_dir='ips',
+    vsim_dir='sim',
+    default_server=DEFAULT_SERVER,
+    default_group=git_group
+)
+
+# updates the IPs from the git repo
+ipdb.update_ips()
+
+# launch generate-ips.py
+ipdb.save_database()
+execute("./generate-scripts")
