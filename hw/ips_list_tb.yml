@@ -1,0 +1,6 @@
+zero-riscy:
+  commit: tags/pulpissimo-v1.0
+tech_cells_generic:
+  commit : 8ed192c7be993bc8daba5467284a76539e5cfac6
+scm:
+  commit : afd3240

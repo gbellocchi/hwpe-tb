@@ -29,6 +29,7 @@ except OSError:
 '''
 
 git_group='pulp-platform'
+ips_list='ips_list_tb.yml'
 
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
@@ -37,7 +38,8 @@ ipdb = ipstools.IPDatabase(
     ips_dir='ips',
     vsim_dir='sim',
     default_server=DEFAULT_SERVER,
-    default_group=git_group
+    default_group=git_group,
+    ips_list_yml_name=ips_list
 )
 
 # updates the IPs from the git repo
@@ -54,6 +56,7 @@ execute("./generate-scripts")
 '''
 
 git_group=sys.argv[1]
+ips_list='ips_list_hwpe.yml'
 
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
@@ -62,11 +65,34 @@ ipdb = ipstools.IPDatabase(
     ips_dir='ips',
     vsim_dir='sim',
     default_server=DEFAULT_SERVER,
-    default_group=git_group
+    default_group=git_group,
+    ips_list_yml_name=ips_list
 )
 
 # updates the IPs from the git repo
 ipdb.update_ips()
+
+# launch generate-ips.py
+ipdb.save_database()
+execute("./generate-scripts")
+
+'''
+    =====================
+    Generate vsim scripts
+    =====================
+'''
+
+ips_list='ips_list_vsim.yml'
+
+# creates an IPApproX database
+ipdb = ipstools.IPDatabase(
+    skip_scripts=True,
+    rtl_dir='rtl',
+    ips_dir='ips',
+    vsim_dir='sim',
+    default_server=DEFAULT_SERVER,
+    ips_list_yml_name=ips_list
+)
 
 # launch generate-ips.py
 ipdb.save_database()
