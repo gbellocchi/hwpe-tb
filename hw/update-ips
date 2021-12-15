@@ -29,7 +29,7 @@ except OSError:
 '''
 
 git_group='pulp-platform'
-ips_list='ips_list_tb.yml'
+tb_ips_list='ips_list_tb.yml'
 
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
@@ -39,7 +39,7 @@ ipdb = ipstools.IPDatabase(
     vsim_dir='sim',
     default_server=DEFAULT_SERVER,
     default_group=git_group,
-    ips_list_yml_name=ips_list
+    ips_list_yml_name=tb_ips_list
 )
 
 # updates the IPs from the git repo
@@ -56,7 +56,7 @@ execute("./generate-scripts")
 '''
 
 git_group=sys.argv[1]
-ips_list='ips_list_hwpe.yml'
+hwpe_ips_list='ips_list_hwpe.yml'
 
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
@@ -66,7 +66,7 @@ ipdb = ipstools.IPDatabase(
     vsim_dir='sim',
     default_server=DEFAULT_SERVER,
     default_group=git_group,
-    ips_list_yml_name=ips_list
+    ips_list_yml_name=hwpe_ips_list
 )
 
 # updates the IPs from the git repo
@@ -82,7 +82,30 @@ execute("./generate-scripts")
     =====================
 '''
 
-ips_list='ips_list_vsim.yml'
+import yaml
+
+vsim_ips_list='ips_list_vsim.yml'
+
+# # Read tb ips list (from pulp_platform group)
+# with open(tb_ips_list, "r") as l:
+#     try:
+#         print(yaml.safe_load(l))
+#         ips_dict_0 = yaml.load(l)
+#     except yaml.YAMLError as exc:
+#         print(exc)
+
+# # Read hwpe ips list (from user group)
+# with open(hwpe_ips_list, "r") as l:
+#     try:
+#         print(yaml.safe_load(l))
+#         ips_dict_1 = yaml.load(l)
+#     except yaml.YAMLError as exc:
+#         print(exc)
+
+# # merge lists - scripts for vsim have 
+# # to take into account all ips
+# ips_list = ips_dict_0.copy()
+# ips_list.update(ips_dict_1)
 
 # creates an IPApproX database
 ipdb = ipstools.IPDatabase(
@@ -91,7 +114,7 @@ ipdb = ipstools.IPDatabase(
     ips_dir='ips',
     vsim_dir='sim',
     default_server=DEFAULT_SERVER,
-    ips_list_yml_name=ips_list
+    ips_list_yml_name=vsim_ips_list
 )
 
 # launch generate-ips.py

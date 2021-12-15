@@ -5,5 +5,5 @@ hwpe-stream:
   commit: 772da7969f31c435993273e1a6b49402dc35e3d8
   domain: [master]
 hwpe-gen-app:
-  commit: cf2fbd8670a73f73772773b27d31677a45fd18f9
+  commit: b7b60e42647a9760c3c9cb6f6d6a22272f366171
   domain: [mac_mdc]

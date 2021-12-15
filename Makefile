@@ -60,14 +60,12 @@ $(BUILD_DIR)/$(TEST_SRCS):
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-# Build explicit rules
 run: $(CRT)
 ifeq ($(gui), 0)
 	cd $(BUILD_DIR)/$(TEST_SRCS); vsim -c vopt_tb -do "run -a" -gSTIM_INSTR=stim_instr.txt -gSTIM_DATA=stim_data.txt -gPROB_STALL=$(P_STALL)
 else
-	cd $(BUILD_DIR)/$(TEST_SRCS); vsim vopt_tb -gSTIM_INSTR=stim_instr.txt -gSTIM_DATA=stim_data.txt -gPROB_STALL=$(P_STALL)
+	cd $(BUILD_DIR)/$(TEST_SRCS); vsim vopt_tb -do "source ${mkfile_path}/run.tcl" -gSTIM_INSTR=stim_instr.txt -gSTIM_DATA=stim_data.txt -gPROB_STALL=$(P_STALL)
 endif
-
 all: $(STIM_INSTR) $(STIM_DATA)
 
 update-ips:
