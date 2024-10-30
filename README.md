@@ -21,11 +21,14 @@ The C testbench is located in `sw/tb_hwpe.c`, along with the boot script
 (`archi_hwpe.h` and `hal_hwpe.h`).
 The top RTL testbench is located in `hw/rtl/tb_hwpe.sv`.
 
+Guidelines to integrate and use this standalone TB with the <span style="font-variant:small-caps;">Richie SLD toolchain</span>
+[is available here](https://richie-docs.readthedocs.io/en/latest/richie-toolchain/index.html#hwpe-based-accelerator-standalone).
+
 # Getting Started
 
 ## Prerequisites
 This testbench requires a RISC-V GCC toolchain available and installed, for
-example https://github.com/pulp-platform/pulp-riscv-gnu-toolchain (the 
+example https://github.com/pulp-platform/pulp-riscv-gnu-toolchain (the
 one used for testing it -- but another toolchain should be fine).
 The toolchain path must be exported like in the PULP SDK, i.e.,
 ```
@@ -41,7 +44,7 @@ make update-ips
 ```
 This will download all the required IPs, solve dependencies and generate the
 simulation scripts using Bender, which will be installed if not already
-available. 
+available.
 
 After having access to the SDK, you can build the simulation platform by doing
 the following:
