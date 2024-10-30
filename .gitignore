@@ -1,11 +1,21 @@
+# hw build
 /hw/ips
 /hw/ipstools
+/hw/.bender/
 
 /hw/rtl/*
 /hw/sim/*
 /hw/veri/*
 hw/.cached_ipdb.json
 
-/sw/*
+# generated files
+hw/Bender.lock
+hw/Bender.yml
+hw/bender
+hw/compile.tcl
+hw/modelsim.ini
+hw/work/
 
+# sw build
+/sw/*
 /build
