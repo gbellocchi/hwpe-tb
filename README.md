@@ -22,7 +22,7 @@ The C testbench is located in `sw/tb_hwpe.c`, along with the boot script
 The top RTL testbench is located in `hw/rtl/tb_hwpe.sv`.
 
 Guidelines to integrate and use this standalone TB with the <span style="font-variant:small-caps;">Richie SLD toolchain</span>
-[is available here](https://richie-docs.readthedocs.io/en/latest/richie-toolchain/index.html#hwpe-based-accelerator-standalone).
+[is available here](https://richie-docs.readthedocs.io/en/latest/richie-sld-toolchain/index.html#hwpe-based-accelerator-standalone).
 
 # Getting Started
 
